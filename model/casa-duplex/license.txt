@@ -1,0 +1,11 @@
+Model Information:
+* title:	Casa Dúplex
+* source:	https://sketchfab.com/3d-models/casa-duplex-b4bad95a3ac3459ca61632dfb19a49dd
+* author:	alecsvaldez (https://sketchfab.com/alexvzzz)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Casa Dúplex" (https://sketchfab.com/3d-models/casa-duplex-b4bad95a3ac3459ca61632dfb19a49dd) by alecsvaldez (https://sketchfab.com/alexvzzz) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
