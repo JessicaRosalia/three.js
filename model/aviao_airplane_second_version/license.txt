@@ -1,0 +1,11 @@
+Model Information:
+* title:	Avião (airplane) second version
+* source:	https://sketchfab.com/3d-models/aviao-airplane-second-version-87e68a9e322c42fa82c7753cb31a9f24
+* author:	vtr-terra (https://sketchfab.com/vtr-terra)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Avião (airplane) second version" (https://sketchfab.com/3d-models/aviao-airplane-second-version-87e68a9e322c42fa82c7753cb31a9f24) by vtr-terra (https://sketchfab.com/vtr-terra) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
