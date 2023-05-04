@@ -1,5 +1,5 @@
 let camera, scene, renderer;
-let airplane, airplaneSpeed = 0;
+let airplane, house, airplaneSpeed = 0;
 let obstacles = [];
 
 const init = () => {
@@ -15,6 +15,10 @@ const init = () => {
     1000
   );
   camera.position.z = 3;
+
+  //adiciona uma luz ao ambiente, responsável por iluminar a cena inteira
+  const ambient = new THREE.AmbientLight('#404040', 4);
+  scene.add(ambient);
 
   // Cria uma luz
   const light = new THREE.PointLight(0xffffff, 1, 100);
@@ -50,7 +54,18 @@ const init = () => {
 
      animate();
   });
+
+  loadHouse();
 };
+
+const loadHouse = () => {
+  let loader = new THREE.GLTFLoader();
+    loader.load('./model/casa-duplex/scene.gltf', function(gltf){
+        scene.add(gltf.scene);
+        house = gltf.scene.children[0]; // atribuindo à variável house o objeto presente na cena
+       animate();
+    });
+}
 
 const animate = () => {
   requestAnimationFrame(animate);
@@ -85,6 +100,12 @@ const animate = () => {
       console.log("Game over!");
       airplaneSpeed = 0;
     }
+  }
+
+  if(house){
+    house.position.z = -10;
+    house.position.x = -15;
+    house.position.y = -10;
   }
 
   // Renderiza a cena
