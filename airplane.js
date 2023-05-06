@@ -16,27 +16,85 @@ const init = () => {
   );
   camera.position.z = 3;
 
+
+  // cria um retangulo
+  const createRectangle = (x, y, color) => {
+    const rectangle = new THREE.PlaneGeometry(x, y);
+    const material = new THREE.MeshBasicMaterial(
+    { color: color });
+    return new THREE.Mesh(rectangle, material);
+  }
+
+  //cria uma esfera
+  const createSphere = (x, y, z, color) => {
+    const sphere = new THREE.SphereGeometry(x, y, z);
+    const material = new THREE.MeshBasicMaterial({
+        color,
+    });
+    return new THREE.Mesh(sphere,material);
+  }
+  
+  // cria um cubo
+  const createCube = (x, y, z, material, materialValue, hasWireframe = false) => {
+    const cube = new THREE.BoxGeometry(x, y, z);
+    const meshMaterial = new THREE.MeshBasicMaterial({
+      [material]: materialValue,
+      wireframe: hasWireframe,
+    });
+    
+    return new THREE.Mesh(cube, meshMaterial);
+  }
+
+  // cria uma textura
+  const createTexture = (textureSource) => {
+    return new THREE.TextureLoader().load(
+        textureSource,
+    );
+  }
+
+  const texture = createTexture('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif');
+
+  const rectangle = createRectangle(0.5, 0.2, '#0000ff');
+  const sphere = createSphere(1, 32, 16, 'pink');
+  const cube = createCube(1, 1, 1, 'color', 'red');
+  const texturedCube = createCube(0.5, 0.5, 0.5, 'map', texture);
+
   //adiciona uma luz ao ambiente, responsável por iluminar a cena inteira
   const ambient = new THREE.AmbientLight('#404040', 4);
   scene.add(ambient);
 
   // Cria uma luz
-  const light = new THREE.PointLight(0xffffff, 1, 100);
+  const light = new THREE.PointLight('#FFF', 1, 100);
   light.position.set(0, 0, 20);
   scene.add(light);
 
   // Cria os obstáculos
-  for (let i = 0; i < 5; i++) {
-    const obstacleGeometry = new THREE.BoxGeometry(1, 1, 1);
-    const obstacleMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-    const obstacle = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
-    obstacle.position.x = (Math.random() - 0.5) * 20;
-    obstacle.position.y = (Math.random() - 0.5) * 20;
-    obstacle.position.z = (Math.random() - 0.5) * 20;
-    obstacles.push(obstacle);
-    scene.add(obstacle);
+  // for (let i = 0; i < 5; i++) {
+  //   const obstacleGeometry = new THREE.BoxGeometry(1, 1, 1);
+  //   const obstacleMaterial = new THREE.MeshBasicMaterial({ color: '#F00' });
+  //   const obstacle = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
+  //   obstacle.position.x = (Math.random() - 0.5) * 20;
+  //   obstacle.position.y = (Math.random() - 0.5) * 20;
+  //   obstacle.position.z = (Math.random() - 0.5) * 20;
+  //   obstacles.push(obstacle);
+  //   scene.add(obstacle);
+  // }
+
+  // Cria os obstáculos, de qualquer forma e insere na tela em posições randômicas
+  const createObstacle = (geometry) => {
+    for (let i = 0; i < 5; i++) {
+      geometry.position.x = (Math.random() - 0.5) * 5;
+      geometry.position.y = (Math.random() - 0.5) * 5;
+      geometry.position.z = (Math.random() - 0.5) * 5;
+      scene.add(geometry);
+    }
   }
 
+  createObstacle(sphere);
+  createObstacle(rectangle);
+  createObstacle(cube);
+  createObstacle(texturedCube);
+  
   // Cria o renderizador
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
